@@ -81,8 +81,3 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
-
-## my own sss
-# component: ""
-# params: ""
-# appversion: ""
