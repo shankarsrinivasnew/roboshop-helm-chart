@@ -15,7 +15,7 @@ spec:
   initContainers:
     - name: aws-ssm-param-store
       image : 334531533654.dkr.ecr.us-east-1.amazonaws.com/aws-ssm-param-store:3.0.0
-      args: [ ".Values.params"]
+      args: [ "{{ .Values.params }}"]
       volumeMounts:
         - mountPath: /params
           name: params
