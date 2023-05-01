@@ -83,6 +83,6 @@ tolerations: []
 affinity: {}
 
 ## my own sss
-component: ""
-params: ""
-appversion: ""
+# component: ""
+# params: ""
+# appversion: ""
