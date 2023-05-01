@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: {{ .Values.component }}
+  labels:
+    component: {{ .Values.component }}
+spec:
+  serviceAccountName: {{ .Values.component }}
+  containers:
+    - name: {{ .Values.component }}
+      image: 334531533654.dkr.ecr.us-east-1.amazonaws.com/{{ .Values.component }}:{{ .Values.appversion }}
+      volumeMounts:
+        - mountPath: /params
+          name: params
+  initContainers:
+    - name: aws-ssm-param-store
+      image : 334531533654.dkr.ecr.us-east-1.amazonaws.com/aws-ssm-param-store:3.0.0
+      args: [ ".Values.params"]
+      volumeMounts:
+        - mountPath: /params
+          name: params
+  volumes:
+  - name: params
+    emptyDir:
+      sizeLimit: 100Mi
